@@ -48,7 +48,7 @@ const FormWrapper = styled.div`
 
 const NewUser = () => {
   const navigate = useNavigate();
-  const { setUsers } = useUsers();
+  const { users, setUsers } = useUsers();
   const [avatar, setAvatar] = useState(null);
   const [dateValue, setDateValue] = useState(dayjs("05/14/2023 11:50 PM"));
   const [errorMsg, setErrorMsg] = useState("");
@@ -75,6 +75,7 @@ const NewUser = () => {
     const formdata = new FormData();
     formdata.append("avatar", avatar);
     formdata.append("date", dayjs(dateValue).valueOf());
+
     Object.keys(getValues()).map((key) => {
       formdata.append(key, getValues(key));
     });
@@ -84,7 +85,13 @@ const NewUser = () => {
       const data = await response.json();
 
       if (data.id) {
-        setUsers((prev) => [...prev, data]);
+        console.log(users);
+        if (users) {
+          setUsers((prev) => [...prev, data]);
+        } else {
+          setUsers([data]);
+        }
+
         Swal.fire("Created", "", "success");
         navigate("/");
       } else {

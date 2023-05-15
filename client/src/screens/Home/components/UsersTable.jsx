@@ -11,6 +11,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 1rem;
+  text-align: center;
   .table {
     overflow-x: auto;
     width: 97%;
@@ -24,19 +25,23 @@ const StyledWrapper = styled.div`
       color: ${({ theme }) => theme.headerText};
     }
   }
+  .infoText {
+    width: 100%;
+    background-color: transparent;
+  }
 `;
 
 const UsersTable = () => {
   const { users, loading } = useUsers();
+  console.log(users);
   return (
     <StyledWrapper className="tablescreen">
-      {loading ? (
-        <CircularProgress />
-      ) : (
+      {loading && <CircularProgress />}
+      {users ? (
         <table className="table">
           <UsersTableHead />
           <TableBody>
-            {users?.map((item) => {
+            {users.map((item) => {
               return (
                 <UserRow
                   key={item.id}
@@ -46,6 +51,8 @@ const UsersTable = () => {
             })}
           </TableBody>
         </table>
+      ) : (
+        <h2 className="infoText">There are no users yet</h2>
       )}
     </StyledWrapper>
   );

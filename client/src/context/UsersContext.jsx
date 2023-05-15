@@ -20,7 +20,10 @@ export const UsersProvider = ({ children }) => {
     try {
       setLoading(true);
       const usersData = await fetchUsers();
-      setUsers(usersData);
+      if (usersData?.length > 0) {
+        setUsers(usersData);
+      }
+
       setLoading(false);
     } catch (e) {
       setError(e.message);
