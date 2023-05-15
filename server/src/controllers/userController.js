@@ -12,8 +12,8 @@ const userController = {
 
   async addUser(req, res) {
     try {
-      await addUserService(req.body);
-      res.status(201).json({ message: "Successful" });
+      const response = await addUserService(req.body);
+      res.status(201).json(response);
     } catch (err) {
       res.status(400).json({ message: err.message });
     }

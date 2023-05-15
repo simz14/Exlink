@@ -12,13 +12,14 @@ const addUserService = async (body) => {
   const { name, email, phone, address, date } = body;
 
   try {
-    await User.create({
+    const newUser = await User.create({
       name: name,
       email: email,
       phone: phone,
       address: address,
       date: date,
     });
+    return newUser;
   } catch (err) {
     throw new Error(err.message);
   }
