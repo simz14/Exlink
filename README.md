@@ -2,26 +2,26 @@
 <h2>Server</h2>
 
 - go to server and create env file with your data
-<p>HOST=localhost</p>
-<p>USER=root</p>
-<p>PASSWORD=password</p>
-<p>DATABASE=users</p>
-<p>PORT=8080</p>
-<p>SECRET_KEY="your secret key"</p>
 
-- go to server -> src -> config and update development data to mach yours
+  - HOST=localhost
+  - USER=root
+  - PASSWORD=password
+  - DATABASE=users
+  - PORT=8080
+  - SECRET_KEY="your secret key"
 
-- run npm install
+- go to server -> src -> config and update development data to match yours
 
-- got to server -> src and run npx sequelize-cli db:migrate
+<code>run npm install</code>
 
-- run npm start
+- got to server -> src and run <code>npx sequelize-cli db:migrate</code>
+
+<code>run npm start</code>
 
 <h2>Client</h2>
 
-- run npm install
-
-- run npm run dev
+<code>run npm install</code>
+<code>run npm run dev</code>
 
 <h3 align="left">Tools and technologies used in this project:</h3>
 <p align="left"> 
