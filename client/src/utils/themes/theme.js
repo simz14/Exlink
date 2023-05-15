@@ -6,6 +6,8 @@ export const theme = {
     thead: "#36304a",
     borderBottom: "#e0e0e0",
     header: "#ffffff82",
+    headerText: "white",
+    button: " #7a61ec",
   },
   dark: {
     text: "#bebebe",
@@ -14,5 +16,7 @@ export const theme = {
     borderBottom: "#322f2f",
     bcg: "#242121",
     header: "#000000b3",
+    headerText: "white",
+    button: " #281b5f",
   },
 };

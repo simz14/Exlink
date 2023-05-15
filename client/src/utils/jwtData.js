@@ -1,4 +1,4 @@
-export const userAuth = () => {
+export const jwtData = () => {
   const token = localStorage.getItem("token");
   if (token) {
     const data = token.split(".")[1];

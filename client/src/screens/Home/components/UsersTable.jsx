@@ -21,7 +21,7 @@ const StyledWrapper = styled.div`
     border-collapse: collapse;
     .MuiTableHead-root .MuiTableCell-root {
       background: ${({ theme }) => theme.thead};
-      color: ${({ theme }) => theme.text};
+      color: ${({ theme }) => theme.headerText};
     }
   }
 `;
