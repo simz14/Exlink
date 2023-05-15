@@ -9,24 +9,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
-        type: Sequelize.STRING,
-      },
+      name: { allowNull: false, type: Sequelize.STRING },
       email: {
+        allowNull: false,
         type: Sequelize.STRING,
+        validate: {
+          isEmail: { msg: "Invalid Email address!" },
+        },
       },
-      email: {
-        type: Sequelize.STRING,
-      },
-      address: {
-        type: Sequelize.STRING,
-      },
-      phone: {
-        type: Sequelize.STRING,
-      },
-      date: {
-        type: Sequelize.BIGINT,
-      },
+      address: { allowNull: true, type: Sequelize.STRING },
+      phone: { allowNull: true, type: Sequelize.STRING },
+      date: { allowNull: false, type: Sequelize.BIGINT },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
