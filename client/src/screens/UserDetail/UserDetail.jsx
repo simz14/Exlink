@@ -12,6 +12,7 @@ import Layout from "../../components/Layout";
 import { Container } from "../../components/Container";
 import { styled } from "styled-components";
 import Swal from "sweetalert2";
+import { jwtData } from "../../utils/jwtData";
 
 const FormWrapper = styled.div`
   display: flex;
@@ -40,6 +41,7 @@ const UserDetail = () => {
   const { setUsers } = useUsers();
   const { user } = useUser(id);
   const [errorMsg, setErrorMsg] = useState("");
+  const [disable, setDisable] = useState(false);
   const [dateValue, setDateValue] = useState(
     user ? user.date : dayjs("05/14/2023 11:50 PM")
   );
@@ -50,8 +52,19 @@ const UserDetail = () => {
     formState: { errors },
   } = useForm();
 
+  const token = async () => {
+    const response = await jwtData(localStorage.getItem("token"));
+    const data = await response;
+    if (!data || data?.id != id) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  };
+
   useEffect(() => {
     setDateValue(dayjs(user?.date));
+    token();
   }, [user]);
 
   const handeClickEdit = () => {
@@ -92,6 +105,7 @@ const UserDetail = () => {
                   defaultValue={user?.name?.split(" ")[0]}
                   error={errors.name ? true : false}
                   helperText={errors.name?.message}
+                  disabled={disable}
                 />
                 <TextField
                   {...register("surname", { required: "Surname is required!" })}
@@ -99,6 +113,7 @@ const UserDetail = () => {
                   defaultValue={user?.name?.split(" ")[1]}
                   error={errors.surname ? true : false}
                   helperText={errors.surname?.message}
+                  disabled={disable}
                 />
               </div>
               <TextField
@@ -114,17 +129,20 @@ const UserDetail = () => {
                 error={errors.email ? true : false}
                 helperText={errors.email?.message}
                 type="email"
+                disabled={disable}
               />
 
               <TextField
                 {...register("address")}
                 label="Address"
                 defaultValue={user?.address}
+                disabled={disable}
               />
               <TextField
                 {...register("phone")}
                 label="Phone"
                 defaultValue={user?.phone}
+                disabled={disable}
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
@@ -133,9 +151,12 @@ const UserDetail = () => {
                   onChange={(newValue) => setDateValue(newValue)}
                   label="Date"
                   error={!dateValue ? true : false}
+                  disabled={disable}
                 />
               </LocalizationProvider>
-              <Button onClick={handleSubmit(handeClickEdit)}>Edit</Button>
+              <Button disabled={disable} onClick={handleSubmit(handeClickEdit)}>
+                Edit
+              </Button>
               {errorMsg && <p>{errorMsg}</p>}
             </div>
           )}
