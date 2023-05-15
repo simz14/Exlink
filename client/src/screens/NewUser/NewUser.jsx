@@ -25,6 +25,7 @@ const FormWrapper = styled.div`
     background-color: white;
     padding: 2rem;
     border-radius: 15px;
+    align-items: center;
   }
   .twoinone {
     display: flex;
@@ -32,6 +33,11 @@ const FormWrapper = styled.div`
   }
   .MuiFormControl-root {
     width: 100%;
+  }
+  .avatar {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
   }
 `;
 
@@ -56,6 +62,11 @@ const NewUser = () => {
     },
   });
 
+  const handleChange = (e) => {
+    setAvatar(e.target.files[0]);
+    setCurrentImage(e.target.value);
+  };
+
   const handeClickCreate = async () => {
     const formdata = new FormData();
     formdata.append("avatar", avatar);
@@ -79,7 +90,7 @@ const NewUser = () => {
       setErrorMsg(e.message);
     }
   };
-
+  console.log(currentImage);
   return (
     <Layout>
       <Container>
@@ -126,13 +137,15 @@ const NewUser = () => {
             </LocalizationProvider>
 
             <Button variant="contained" component="label">
-              Upload File
-              <input
-                onChange={(e) => setAvatar(e.target.files[0])}
-                type="file"
-                hidden
-              />
+              Upload Image
+              <input onChange={(e) => handleChange(e)} type="file" hidden />
             </Button>
+
+            <img
+              className="avatar"
+              src={URL.createObjectURL(avatar)}
+              alt="avatar"
+            />
 
             <Button onClick={handleSubmit(handeClickCreate)}>Create</Button>
             {errorMsg && <p>{errorMsg}</p>}
