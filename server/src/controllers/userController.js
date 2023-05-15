@@ -12,7 +12,7 @@ const userController = {
 
   async addUser(req, res) {
     try {
-      const response = await addUserService(req.body);
+      const response = await addUserService({ body: req.body, file: req.file });
       res.status(201).json(response);
     } catch (err) {
       res.status(400).json({ message: err.message });

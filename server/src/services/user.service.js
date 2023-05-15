@@ -8,7 +8,7 @@ const getUsersService = async () => {
   }
 };
 
-const addUserService = async (body) => {
+const addUserService = async ({ body, file }) => {
   const { name, email, phone, address, date } = body;
 
   try {
@@ -18,6 +18,7 @@ const addUserService = async (body) => {
       phone: phone,
       address: address,
       date: date,
+      avatar: file ? `/uploads/${file.filename}` : null,
     });
     return newUser;
   } catch (err) {

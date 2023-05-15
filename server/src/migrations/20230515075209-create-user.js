@@ -20,6 +20,7 @@ module.exports = {
       address: { allowNull: true, type: Sequelize.STRING },
       phone: { allowNull: true, type: Sequelize.STRING },
       date: { allowNull: false, type: Sequelize.BIGINT },
+      avatar: { allowNull: true, type: Sequelize.STRING },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
