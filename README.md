@@ -1,14 +1,14 @@
 <h3 align="left">To run this project</h3>
 <h2>Server</h2>
 
-- go to server and create env file with your data
+- go to server folder and create .env file with your data
 
-  - HOST=localhost
-  - USER=root
+  - HOST=localhost(where is your database being hosted)
+  - USER=root(database account)
   - PASSWORD=password
   - DATABASE=users
-  - PORT=8080
-  - SECRET_KEY="your secret key"
+  - PORT=8080(port the server will run on)
+  - SECRET_KEY="your secret key"(JWT token secret key)
 
 - go to server -> src -> config and update development data to match yours
 
