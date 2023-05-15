@@ -10,7 +10,7 @@ const HeaderWrapper = styled.nav`
   width: 100%;
   background-color: white;
   background-color: #ffffff6b;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
 
   nav {
     padding: 0 1rem;
@@ -20,6 +20,13 @@ const HeaderWrapper = styled.nav`
 
   .title {
     cursor: pointer;
+  }
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    grid-column: 3/4;
+    align-items: center;
+    gap: 0.5rem;
   }
 `;
 
@@ -33,7 +40,13 @@ const Header = () => {
           <h2 className="title" onClick={() => navigate("/")}>
             User List
           </h2>
-          <Button onClick={() => navigate("/user/new")} title="Create" />
+          <div className="buttons">
+            <Button onClick={() => navigate("/user/new")} title="Create" />
+            <Button
+              onClick={() => window.localStorage.removeItem("token")}
+              title="Sign Out"
+            />
+          </div>
         </nav>
       </Container>
     </HeaderWrapper>

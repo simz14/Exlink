@@ -16,10 +16,10 @@ const StyledWrapper = styled.div`
     width: 97%;
     min-width: 350px;
     background-color: white;
-    border-radius: 15px;
     margin: 1rem;
     padding: 1rem;
-    .MuiTableHead-root {
+    border-collapse: collapse;
+    .MuiTableHead-root .MuiTableCell-root {
       background-color: #36304a;
       color: white;
     }
