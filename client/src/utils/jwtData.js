@@ -1,10 +1,9 @@
-export const jwtData = async (token) => {
+export const userAuth = () => {
+  const token = localStorage.getItem("token");
   if (token) {
-    const payload = token.split(".")[1];
-    //decode with base64
-    //to json object
-    const decodedValue = await JSON.parse(window.atob(payload));
-    return decodedValue;
+    const data = token.split(".")[1];
+    const decodedData = JSON.parse(window.atob(data));
+    return decodedData;
   } else {
     return false;
   }

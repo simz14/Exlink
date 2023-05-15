@@ -16,7 +16,9 @@ import { fetchLogin } from "../../service/loginService";
 const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 1rem;
+  align-items: center;
+  background: linear-gradient(45deg, #4158d0, #c850c0);
+  height: 100vh;
 
   .form {
     display: flex;

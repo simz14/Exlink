@@ -7,6 +7,11 @@ import { jwtData } from "../../../utils/jwtData";
 
 const StyledRow = styled(TableRow)`
   transition: 0.5s ease;
+  background-color: ${({ theme }) => theme.trow};
+  .MuiTableCell-root {
+    color: ${({ theme }) => theme.text};
+  }
+
   &:hover {
     transition: 0.5s ease;
     background-color: #b0a5d0;

@@ -20,8 +20,8 @@ const StyledWrapper = styled.div`
     padding: 1rem;
     border-collapse: collapse;
     .MuiTableHead-root .MuiTableCell-root {
-      background-color: #36304a;
-      color: white;
+      background: ${({ theme }) => theme.thead};
+      color: ${({ theme }) => theme.text};
     }
   }
 `;

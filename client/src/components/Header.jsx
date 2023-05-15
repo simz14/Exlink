@@ -2,14 +2,15 @@ import Button from "./Button";
 import { styled } from "styled-components";
 import { Container } from "./Container";
 import { useNavigate } from "react-router-dom";
+import ThemeSwitcher from "./Switcher";
 
 const HeaderWrapper = styled.nav`
-  position: sticky;
+  position: absolute;
   top: 0;
   z-index: 999;
   width: 100%;
-  background-color: white;
-  background-color: #ffffff6b;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.header};
   border-radius: 0 0 10px 10px;
 
   nav {
@@ -33,6 +34,10 @@ const HeaderWrapper = styled.nav`
 const Header = () => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    window.localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <HeaderWrapper>
       <Container>
@@ -41,11 +46,9 @@ const Header = () => {
             User List
           </h2>
           <div className="buttons">
+            <ThemeSwitcher />
             <Button onClick={() => navigate("/user/new")} title="Create" />
-            <Button
-              onClick={() => window.localStorage.removeItem("token")}
-              title="Sign Out"
-            />
+            <Button onClick={handleClick} title="Sign Out" />
           </div>
         </nav>
       </Container>

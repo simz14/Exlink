@@ -23,9 +23,15 @@ const FormWrapper = styled.div`
     flex-direction: column;
     margin-top: 5rem;
     gap: 1rem;
-    background-color: white;
+    background-color: ${({ theme }) => theme.trow};
     padding: 2rem;
     border-radius: 15px;
+    align-items: center;
+  }
+  .MuiFormLabel-root,
+  .MuiInputBase-root,
+  svg {
+    color: ${({ theme }) => theme.text};
   }
   .twoinone {
     display: flex;

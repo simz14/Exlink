@@ -22,10 +22,15 @@ const FormWrapper = styled.div`
     flex-direction: column;
     margin-top: 5rem;
     gap: 1rem;
-    background-color: white;
+    background-color: ${({ theme }) => theme.trow};
     padding: 2rem;
     border-radius: 15px;
     align-items: center;
+  }
+  .MuiFormLabel-root,
+  .MuiInputBase-root,
+  svg {
+    color: ${({ theme }) => theme.text};
   }
   .twoinone {
     display: flex;
@@ -64,7 +69,6 @@ const NewUser = () => {
 
   const handleChange = (e) => {
     setAvatar(e.target.files[0]);
-    setCurrentImage(e.target.value);
   };
 
   const handeClickCreate = async () => {
@@ -90,7 +94,7 @@ const NewUser = () => {
       setErrorMsg(e.message);
     }
   };
-  console.log(currentImage);
+
   return (
     <Layout>
       <Container>
@@ -140,12 +144,13 @@ const NewUser = () => {
               Upload Image
               <input onChange={(e) => handleChange(e)} type="file" hidden />
             </Button>
-
-            <img
-              className="avatar"
-              src={URL.createObjectURL(avatar)}
-              alt="avatar"
-            />
+            {avatar && (
+              <img
+                className="avatar"
+                src={URL.createObjectURL(avatar)}
+                alt="avatar"
+              />
+            )}
 
             <Button onClick={handleSubmit(handeClickCreate)}>Create</Button>
             {errorMsg && <p>{errorMsg}</p>}

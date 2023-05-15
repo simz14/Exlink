@@ -1,11 +1,18 @@
 import { PropTypes } from "prop-types";
 import Header from "./Header";
+import { styled } from "styled-components";
+
+const MainWrapper = styled.main`
+  background: ${({ theme }) => theme.bcg};
+  min-height: 100vh;
+  padding-top: 68px;
+`;
 
 const Layout = ({ children }) => {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      <MainWrapper>{children}</MainWrapper>
     </div>
   );
 };
