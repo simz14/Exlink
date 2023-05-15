@@ -6,9 +6,6 @@ export const fetchUsers = async () => {
 export const createUser = async (userData) => {
   return fetch("http://localhost:8080/user", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
+    body: userData,
   });
 };

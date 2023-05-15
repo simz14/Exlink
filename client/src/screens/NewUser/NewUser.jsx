@@ -37,7 +37,8 @@ const FormWrapper = styled.div`
 
 const NewUser = () => {
   const navigate = useNavigate();
-  const { setUsers, users } = useUsers();
+  const { setUsers } = useUsers();
+  const [avatar, setAvatar] = useState(null);
   const [dateValue, setDateValue] = useState(dayjs("05/14/2023 11:50 PM"));
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -52,18 +53,21 @@ const NewUser = () => {
       name: "",
       phone: "",
       address: "",
-      date: "",
     },
   });
 
   const handeClickCreate = async () => {
+    const formdata = new FormData();
+    formdata.append("avatar", avatar);
+    formdata.append("date", dayjs(dateValue).valueOf());
+    Object.keys(getValues()).map((key) => {
+      formdata.append(key, getValues(key));
+    });
+
     try {
-      const response = await createUser({
-        ...getValues(),
-        date: dayjs(dateValue).valueOf(),
-      });
+      const response = await createUser(formdata);
       const data = await response.json();
-      console.log(data);
+
       if (data.id) {
         setUsers((prev) => [...prev, data]);
         Swal.fire("Created", "", "success");
@@ -120,6 +124,15 @@ const NewUser = () => {
                 helperText={errors.date?.message}
               />
             </LocalizationProvider>
+
+            <Button variant="contained" component="label">
+              Upload File
+              <input
+                onChange={(e) => setAvatar(e.target.files[0])}
+                type="file"
+                hidden
+              />
+            </Button>
 
             <Button onClick={handleSubmit(handeClickCreate)}>Create</Button>
             {errorMsg && <p>{errorMsg}</p>}
