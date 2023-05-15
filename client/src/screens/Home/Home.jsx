@@ -1,12 +1,13 @@
 import { Container } from "../../components/Container";
 import Layout from "../../components/Layout";
+import UsersTable from "./components/UsersTable";
 
 const Home = () => {
   return (
     <Layout>
       <Container>
         <div>
-          <p>Home</p>
+          <UsersTable />
         </div>
       </Container>
     </Layout>
