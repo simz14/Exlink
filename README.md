@@ -12,16 +12,17 @@
 
 - go to server -> src -> config and update development data to match yours
 
-<code>run npm install</code>
+- <code>run npm install</code>
 
 - got to server -> src and run <code>npx sequelize-cli db:migrate</code>
 
-<code>run npm start</code>
+- <code>run npm start</code>
 
 <h2>Client</h2>
 
-<code>run npm install</code>
-<code>run npm run dev</code>
+- <code>run npm install</code>
+
+- <code>run npm run dev</code>
 
 <h3 align="left">Tools and technologies used in this project:</h3>
 <p align="left"> 
