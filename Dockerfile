@@ -14,3 +14,5 @@ RUN cd client && npm install
 RUN cd server && npm install
 
 CMD ["node", "server/app.js"]
+
+test
